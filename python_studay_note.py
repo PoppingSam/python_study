@@ -643,6 +643,68 @@ while current_number <= 10:
 while message != "quit":
     message = input("请输入你想要的配料： ")
     print(f"你要的配料是 {message}")
-    
+
+#练习8.9
+def show_message(message):
+    for message in messages:
+        print(message)
+
+messages = ["你好","你吃了吗？"]
+show_message(messages)
+
+def show_message(message):
+    print("Original messages:")
+    for message in messages:
+        print(message)
+
+def send_messages(messages,sent_messages):
+    print("Sending message")
+    while messages:
+        current_message = messages.pop()
+        sent_messages.append(current_message)
+
+messages = ["你好","你吃了吗？"]
+sent_messages = []
+show_message(messages)
+send_messages(messages,sent_messages)
+print(messages)
+print(sent_messages)
 
 
+messages = ["你好","你吃了吗？"]
+sent_messages = []
+def show_message(messages):
+    for message in messages:
+        print(message)
+def send_message(messages,sent_messages):
+    print("Sending message")
+    while messages:
+        current_message = messages.pop()
+        sent_messages.append(current_message)
+
+print("Original message:")
+show_message(messages)
+send_message(messages[:],sent_messages)
+print("Final result")
+print(messages)
+print(sent_messages)
+
+def making_pizza(*toppings):
+    print("Making your pizza with these toppings:")
+    for topping in toppings:
+        print(topping)
+toppings = []
+while True:
+    topping = input("Enter the topping: ")
+    if topping == "quit":
+        break
+    else:
+        toppings.append(topping)
+making_pizza(toppings)      #现在toppings是个列表，Python会把这个列表当成1个元素，因此打印出来是个列表
+making_pizza(*toppings)     #解决方案：函数在调用时加“*”解包，这样也可以逐个打印
+
+def making_pizza(*toppings):
+    print("Making your pizza with these toppings:")
+    for topping in toppings:
+        print(topping)
+making_pizza("cheese","meat")   #输入的参数是2个元素，Python认为是2个元素，因此会逐个打印

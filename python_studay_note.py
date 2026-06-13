@@ -121,7 +121,7 @@ guest.insert(2,"Oliver")
 print(guest)
 guest.append("Uncle")
 print(guest)
-print(f"Welocome to dinner, {guest[0]}. \n{greeting}{guest[1].title()}. \n{greeting}{guest[2].title()}. \n{greeting}{guest[3].title()}. \n{greeting}{guest[4].title()}. \n{greeting}{guest[5].title()}.")
+print(f"Welcome to dinner, {guest[0]}. \n{greeting}{guest[1].title()}. \n{greeting}{guest[2].title()}. \n{greeting}{guest[3].title()}. \n{greeting}{guest[4].title()}. \n{greeting}{guest[5].title()}.")
 print("Sorry, I can only invite two persons")
 not_come_person=guest.pop(5)               #用pop函数提取被删除的参数
 print(f"Sorry, {not_come_person}, I cannot invite you")
@@ -768,3 +768,134 @@ mn.making_sandwich("gee")
 from sandwich import *
 making_sandwich("egg")
 
+class Dog:
+    def __init__(self,dog_name,dog_age,dog_color):
+        self.name = dog_name
+        self.age = dog_age
+        self.color = dog_color
+    def sit(self):
+        print(f"{self.name} is sitting now")
+    def think(self,dog_think):
+        print(f"{self.name}正在思考{dog_think}")
+
+my_dog = Dog("布布","2","黄白色")
+print(f"我的狗叫{my_dog.name},今年{my_dog.age}岁,是{my_dog.color}")
+my_dog.sit()
+my_dog.think("今天吃啥？")
+
+
+#定义餐厅类
+class Restaurant:
+
+#餐厅有名称和类型
+    def __init__(self,restaurant_name,cuisine_type):
+        self.name = restaurant_name
+        self.type = cuisine_type
+
+#描述餐厅
+    def describe_restaurant(self):
+        print(f"餐厅名字叫{self.name}, 是一家{self.type}")
+
+#显示正在营业
+    def open_restaurant(self):
+        print(f"{self.name}正在营业中")
+
+
+restaurant1 = Restaurant("西塔老太太","烤肉店")
+restaurant1.describe_restaurant()
+restaurant1.open_restaurant()
+
+restaurant2 = Restaurant("眉州东坡","江浙菜")
+restaurant2.describe_restaurant()
+restaurant2.open_restaurant()
+
+restaurant3 = Restaurant("肯德基","快餐店")
+restaurant3.describe_restaurant()
+restaurant3.open_restaurant()
+
+class User:
+
+    
+    def __init__(self,first_name,last_name,email,location):
+        self.first_name = first_name
+        self.last_name = last_name
+        self.email = email
+        self.location = location
+    
+    
+    def describe_user(self):
+        print(f"用户名是{self.first_name}{self.last_name}, Email:{self.email}, location:{self.location}")
+    
+    def greet_user(self):
+        print(f"{self.first_name}{self.last_name}你好！")
+
+
+user1 = User("诗伟","戴","xxsxsxsxsx4@qq.com","上海")
+user1.describe_user()
+user1.greet_user()
+        
+class Restaurant:
+
+#餐厅有名称和类型
+    def __init__(self,restaurant_name,cuisine_type):
+        self.name = restaurant_name
+        self.type = cuisine_type
+        self.number_served = 0
+
+
+    def describe_restaurant(self):
+        print(f"餐厅名字叫{self.name}, 是一家{self.type}")
+
+
+    def read_number(self):
+        print(f"{self.number_served}人就餐")
+
+
+    def set_number_served(self,set_number):
+        self.number_served = set_number
+    
+    def increment_number_served(self,increment):
+        self.number_served += increment
+
+
+restaurant = Restaurant("西塔老太太","烤肉店")
+print(restaurant.number_served)
+restaurant.set_number_served(5)
+restaurant.read_number()
+restaurant.increment_number_served(50)
+restaurant.read_number()
+
+class User:
+
+    
+    def __init__(self,first_name,last_name,email,location):
+        self.first_name = first_name
+        self.last_name = last_name
+        self.email = email
+        self.location = location
+        self.log_attempts = 0
+    
+#使用f-string可以分行写代码 
+    def describe_user(self):
+        print(
+            f"用户名是{self.first_name}{self.last_name},"
+            f" Email:{self.email},"
+            f" location:{self.location},"
+            f" 登录次数:{self.log_attempts}."
+             )
+
+    def greet_user(self):
+        print(f"{self.first_name}{self.last_name}你好！")
+    
+    def increment_login_attempts(self):
+        self.log_attempts += 1
+
+    def reset_login_attempts(self):
+        self.log_attempts = 0
+
+user1 = User("诗伟","戴","xxsxsxsxsx4@qq.com","上海")
+user1.describe_user()
+user1.increment_login_attempts()
+user1.describe_user()
+user1.reset_login_attempts()
+user1.describe_user()

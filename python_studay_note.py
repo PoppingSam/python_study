@@ -708,3 +708,63 @@ def making_pizza(*toppings):
     for topping in toppings:
         print(topping)
 making_pizza("cheese","meat")   #输入的参数是2个元素，Python认为是2个元素，因此会逐个打印
+
+#Day08
+#创建1个函数，使用*形参，列出配料
+def making_sandwich(*toppings):
+    print("Making your sandwich:")
+    for topping in toppings:
+        print(topping)
+making_sandwich("cheese")
+making_sandwich("meat","cheese")
+
+def user_profile(first,last,**description):
+    description["first_name"] = first
+    description["last_name"] = last
+    return description
+
+print(user_profile("诗伟","戴",居住地="上海",形象="帅气",职业="供应链专家"))
+
+def make_car(manufacture,sku,**car_info):
+    car_info["manufacture_name"] = manufacture
+    car_info["model"] = sku
+    return car_info
+car = make_car("subaru","outback",color="blue",tow_package=True)
+print(car)
+
+#导入其他py文件并引用函数
+import pizza
+pizza.make_pizza(16,"cheese")
+
+#导入其他py文件中的某一个函数
+from pizza import make_pizza
+make_pizza(16,"meat")   #直接引用即可
+
+#导入其他py文件中的函数后，可以在我的文件中重命名这个函数，在我的文件中这个函数叫my_pizza
+from pizza import make_pizza as my_pizza
+my_pizza(16,"cs")
+
+#导入其他py文件后，可以在我的文件中重命名这个文件
+import pizza as p
+p.make_pizza(16,"meat")
+
+#使用*，在导入其他py文件并引用其所有的函数，这样无需使用文件名.函数来引用
+from pizza import *
+make_pizza(12,"meat")
+
+#练习8.16
+import sandwich
+sandwich.making_sandwich("cheese")
+
+from sandwich import making_sandwich
+making_sandwich("cheese")
+
+from sandwich import making_sandwich as fn
+fn("meat")
+
+import sandwich as mn
+mn.making_sandwich("gee")
+
+from sandwich import *
+making_sandwich("egg")
+

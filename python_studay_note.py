@@ -121,7 +121,7 @@ guest.insert(2,"Oliver")
 print(guest)
 guest.append("Uncle")
 print(guest)
-print(f"Welcome to dinner, {guest[0]}. \n{greeting}{guest[1].title()}. \n{greeting}{guest[2].title()}. \n{greeting}{guest[3].title()}. \n{greeting}{guest[4].title()}. \n{greeting}{guest[5].title()}.")
+print(f"Welocome to dinner, {guest[0]}. \n{greeting}{guest[1].title()}. \n{greeting}{guest[2].title()}. \n{greeting}{guest[3].title()}. \n{greeting}{guest[4].title()}. \n{greeting}{guest[5].title()}.")
 print("Sorry, I can only invite two persons")
 not_come_person=guest.pop(5)               #用pop函数提取被删除的参数
 print(f"Sorry, {not_come_person}, I cannot invite you")
@@ -709,193 +709,149 @@ def making_pizza(*toppings):
         print(topping)
 making_pizza("cheese","meat")   #输入的参数是2个元素，Python认为是2个元素，因此会逐个打印
 
-#Day08
-#创建1个函数，使用*形参，列出配料
-def making_sandwich(*toppings):
-    print("Making your sandwich:")
-    for topping in toppings:
-        print(topping)
-making_sandwich("cheese")
-making_sandwich("meat","cheese")
-
-def user_profile(first,last,**description):
-    description["first_name"] = first
-    description["last_name"] = last
-    return description
-
-print(user_profile("诗伟","戴",居住地="上海",形象="帅气",职业="供应链专家"))
-
-def make_car(manufacture,sku,**car_info):
-    car_info["manufacture_name"] = manufacture
-    car_info["model"] = sku
-    return car_info
-car = make_car("subaru","outback",color="blue",tow_package=True)
-print(car)
-
-#导入其他py文件并引用函数
-import pizza
-pizza.make_pizza(16,"cheese")
-
-#导入其他py文件中的某一个函数
-from pizza import make_pizza
-make_pizza(16,"meat")   #直接引用即可
-
-#导入其他py文件中的函数后，可以在我的文件中重命名这个函数，在我的文件中这个函数叫my_pizza
-from pizza import make_pizza as my_pizza
-my_pizza(16,"cs")
-
-#导入其他py文件后，可以在我的文件中重命名这个文件
-import pizza as p
-p.make_pizza(16,"meat")
-
-#使用*，在导入其他py文件并引用其所有的函数，这样无需使用文件名.函数来引用
-from pizza import *
-make_pizza(12,"meat")
-
-#练习8.16
-import sandwich
-sandwich.making_sandwich("cheese")
-
-from sandwich import making_sandwich
-making_sandwich("cheese")
-
-from sandwich import making_sandwich as fn
-fn("meat")
-
-import sandwich as mn
-mn.making_sandwich("gee")
-
-from sandwich import *
-making_sandwich("egg")
-
-class Dog:
-    def __init__(self,dog_name,dog_age,dog_color):
-        self.name = dog_name
-        self.age = dog_age
-        self.color = dog_color
-    def sit(self):
-        print(f"{self.name} is sitting now")
-    def think(self,dog_think):
-        print(f"{self.name}正在思考{dog_think}")
-
-my_dog = Dog("布布","2","黄白色")
-print(f"我的狗叫{my_dog.name},今年{my_dog.age}岁,是{my_dog.color}")
-my_dog.sit()
-my_dog.think("今天吃啥？")
+class Car:
 
 
-#定义餐厅类
-class Restaurant:
-
-#餐厅有名称和类型
-    def __init__(self,restaurant_name,cuisine_type):
-        self.name = restaurant_name
-        self.type = cuisine_type
-
-#描述餐厅
-    def describe_restaurant(self):
-        print(f"餐厅名字叫{self.name}, 是一家{self.type}")
-
-#显示正在营业
-    def open_restaurant(self):
-        print(f"{self.name}正在营业中")
+    def __init__(self,brand,model,year):
+        self.brand = brand
+        self.model = model
+        self.year = year
+        self.miles = 0
 
 
-restaurant1 = Restaurant("西塔老太太","烤肉店")
-restaurant1.describe_restaurant()
-restaurant1.open_restaurant()
+    def get_description(self):
+        long_name = f"{self.year} {self.brand} {self.model}"
+        return long_name.title()
+    
 
-restaurant2 = Restaurant("眉州东坡","江浙菜")
-restaurant2.describe_restaurant()
-restaurant2.open_restaurant()
-
-restaurant3 = Restaurant("肯德基","快餐店")
-restaurant3.describe_restaurant()
-restaurant3.open_restaurant()
-
-class User:
+    def read_miles(self):
+        print(f"This car drives {self.miles} miles")
 
     
-    def __init__(self,first_name,last_name,email,location):
-        self.first_name = first_name
-        self.last_name = last_name
-        self.email = email
-        self.location = location
+    def update_miles(self,miles):
+        if miles >= self.miles:
+            self.miles = miles
+        else:
+            print("You cannot return back")
     
-    
-    def describe_user(self):
-        print(f"用户名是{self.first_name}{self.last_name}, Email:{self.email}, location:{self.location}")
-    
-    def greet_user(self):
-        print(f"{self.first_name}{self.last_name}你好！")
+
+    def increment_miles(self,increment):
+        self.miles += increment
+
+    def fills_gas_tank(self):
+        print(f"This car need a gas tank")
 
 
-user1 = User("诗伟","戴","xxsxsxsxsx4@qq.com","上海")
-user1.describe_user()
-user1.greet_user()
+class ElectricCar(Car):
         
-class Restaurant:
+    def __init__(self,brand,model,year,battery_size):   #这里的_init_方法是初始化最大集合
+        super().__init__(brand,model,year)              #super()方法调用父类的属性
+        self.battery = Battery(battery_size)            #self.battery 创建电车自己的属性
 
-#餐厅有名称和类型
+    def fills_gas_tank(self):
+        print(f"This car doesn't need a gas tank")
+
+class Battery:
+    def __init__(self,battery_size):
+        self.battery_size = battery_size
+
+    def describe_battery(self):
+        print(f"This car's battery has {self.battery_size} kwh.")  
+    
+    def get_range(self):
+        if self.battery_size == 40:
+            max_miles = 150
+        elif self.battery_size > 40:
+            max_miles = 250
+        print(f"This car's max miles is {max_miles} miles")
+
+
+my_car = Car("audi","A5",2026)
+my_electric_car = ElectricCar("tesla","model y",2026,100)
+print(my_car.get_description())
+my_car.read_miles()
+my_car.miles = 500
+my_car.read_miles()
+my_car.update_miles(700)
+my_car.read_miles()
+my_car.update_miles(400)
+my_car.read_miles()
+my_car.increment_miles(100)
+my_car.read_miles()
+print(my_electric_car.get_description())
+my_electric_car.fills_gas_tank()
+my_electric_car.battery.describe_battery()
+my_electric_car.battery.get_range()
+
+class Restaurant:
     def __init__(self,restaurant_name,cuisine_type):
         self.name = restaurant_name
         self.type = cuisine_type
         self.number_served = 0
 
-
     def describe_restaurant(self):
-        print(f"餐厅名字叫{self.name}, 是一家{self.type}")
+        print(f"{self.name},{self.type}")
 
-
-    def read_number(self):
-        print(f"{self.number_served}人就餐")
-
-
+    def open_restaurant(self):
+        print(f"{self.name}正在营业中")
+    
     def set_number_served(self,set_number):
         self.number_served = set_number
+
+    def increment(self,incremental):
+        self.number_served += incremental
+
+class IceCreamStand(Restaurant):
+
+    def __init__(self, restaurant_name, cuisine_type):
+        super().__init__(restaurant_name, cuisine_type)
+        self.flavors = []
     
-    def increment_number_served(self,increment):
-        self.number_served += increment
+    def flavors_list(self):
+        print("We have the following flavors:")
+        for flavor in self.flavors:
+            print(f"{flavor.title()}")
 
 
-restaurant = Restaurant("西塔老太太","烤肉店")
-print(restaurant.number_served)
-restaurant.set_number_served(5)
-restaurant.read_number()
-restaurant.increment_number_served(50)
-restaurant.read_number()
+restaurant1 = Restaurant("肯德基","快餐")
+restaurant1.describe_restaurant()
+restaurant1.open_restaurant()
+print(restaurant1.number_served)
+restaurant1.number_served = 20
+print(restaurant1.number_served)
+restaurant1.set_number_served(5)
+print(restaurant1.number_served)
+restaurant1.increment(500)
+print(restaurant1.number_served)
+
+IceCreamStand1 = IceCreamStand("DQ","冰激淋店")
+IceCreamStand1.flavors = ["巧克力","香草","草莓"]
+IceCreamStand1.flavors_list()
 
 class User:
-
+    def __init__(self,first_name,last_name,age):
+        self.first_name = first_name.title()
+        self.last_name = last_name.title()
+        self.age = age
     
-    def __init__(self,first_name,last_name,email,location):
-        self.first_name = first_name
-        self.last_name = last_name
-        self.email = email
-        self.location = location
-        self.log_attempts = 0
-    
-#使用f-string可以分行写代码 
     def describe_user(self):
-        print(
-            f"用户名是{self.first_name}{self.last_name},"
-            f" Email:{self.email},"
-            f" location:{self.location},"
-            f" 登录次数:{self.log_attempts}."
-             )
-
-    def greet_user(self):
-        print(f"{self.first_name}{self.last_name}你好！")
+        print(f"{self.first_name} {self.last_name}, {self.age}")
     
-    def increment_login_attempts(self):
-        self.log_attempts += 1
+    def greeting_user(self):
+        print(f"Hello, {self.first_name} {self.last_name} ")
 
-    def reset_login_attempts(self):
-        self.log_attempts = 0
+class Admin(User):
+    def __init__(self, first_name, last_name, age):
+        super().__init__(first_name, last_name, age)
+        self.privileges = ["can add post","can delete post","can ban user"]
+    
+    def show_privileges(self):
+        print(f"You have the following privileges:")
+        for privilege in self.privileges:
+            print(privilege)
 
-user1 = User("诗伟","戴","xxsxsxsxsx4@qq.com","上海")
+user1 = User("sam","dai",35)
 user1.describe_user()
-user1.increment_login_attempts()
-user1.describe_user()
-user1.reset_login_attempts()
-user1.describe_user()
+user1.greeting_user()
+admin1 = Admin("oliver","cao",35)
+admin1.show_privileges()

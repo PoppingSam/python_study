@@ -843,15 +843,209 @@ class User:
 class Admin(User):
     def __init__(self, first_name, last_name, age):
         super().__init__(first_name, last_name, age)
-        self.privileges = ["can add post","can delete post","can ban user"]
+        self.privileges = Privileges()
     
+class Privileges:
+
+    def __init__(self):
+        self.privilege = ["can add post","can delete post","can ban user"]
+
     def show_privileges(self):
         print(f"You have the following privileges:")
-        for privilege in self.privileges:
+        for privilege in self.privilege:
             print(privilege)
+
+    
 
 user1 = User("sam","dai",35)
 user1.describe_user()
 user1.greeting_user()
 admin1 = Admin("oliver","cao",35)
-admin1.show_privileges()
+admin1.privileges.show_privileges()
+
+
+#Day09
+class Car:
+
+
+    def __init__(self,brand,model,year):
+        self.brand = brand
+        self.model = model
+        self.year = year
+        self.miles = 0
+
+
+    def get_description(self):
+        long_name = f"{self.year} {self.brand} {self.model}"
+        return long_name.title()
+    
+
+    def read_miles(self):
+        print(f"This car drives {self.miles} miles")
+
+    
+    def update_miles(self,miles):
+        if miles >= self.miles:
+            self.miles = miles
+        else:
+            print("You cannot return back")
+    
+
+    def increment_miles(self,increment):
+        self.miles += increment
+
+    def fills_gas_tank(self):
+        print(f"This car need a gas tank")
+
+
+class ElectricCar(Car):
+        
+    def __init__(self,brand,model,year,battery_size):   #这里的_init_方法是初始化最大集合
+        super().__init__(brand,model,year)              #super()方法调用父类的属性
+        self.battery = Battery(battery_size)            #self.battery 创建电车自己的属性
+
+    def fills_gas_tank(self):
+        print(f"This car doesn't need a gas tank")
+
+class Battery:
+    def __init__(self,battery_size):
+        self.battery_size = battery_size
+
+    def describe_battery(self):
+        print(f"This car's battery has {self.battery_size} kwh.")  
+    
+    def get_range(self):
+        if self.battery_size == 40:
+            max_miles = 150
+        elif self.battery_size > 40:
+            max_miles = 250
+        print(f"This car's max miles is {max_miles} miles")
+    
+    def upgrade_battery(self):
+        if self.battery_size < 65:
+            self.battery_size = 65
+
+my_electric_car = ElectricCar("tesla","model y",2026,40)
+my_electric_car.battery.get_range()
+my_electric_car.battery.upgrade_battery()
+my_electric_car.battery.get_range()
+
+# 将Car类单独存储在模块car.py中，然后使用from...import...导入Car类，让代码更简洁
+from car import Car
+my_electric_car = ElectricCar("tesla","model y",2026,40)
+print(my_electric_car.get_description())
+
+# 从car.py导入ElectricCar类
+from car import ElectricCar
+my_electric_car = ElectricCar("tesla","model y",2026,40)
+my_electric_car.battery.get_range()
+
+# 从car.py导入Car类和ElectricCar类
+from car import Car,ElectricCar
+my_electric_car = ElectricCar("tesla","model y",2026,40)
+print(my_electric_car.get_description())
+my_electric_car.battery.get_range()
+
+# 导入整个car.py文件，可以使用里面所有的类.使用点号标明访问需要的类
+import car
+my_electric_car = car.ElectricCar("tesla","model y",2026,40)
+print(my_electric_car.get_description())
+
+
+# 导入整个car.py文件，可以使用里面所有的类，但不推荐，因为有可能car.py里的类名和主程序里的重复
+from car import *
+my_electric_car = ElectricCar("tesla","model y",2026,40)
+print(my_electric_car.get_description())
+my_electric_car.battery.get_range()
+my_electric_car.battery.upgrade_battery()
+my_electric_car.battery.get_range()
+
+# 从不同模块导入类
+from car import Car
+from electric_car import ElectricCar,Battery
+my_electric_car = ElectricCar("tesla","model y",2026,40)
+print(my_electric_car.get_description())
+my_electric_car.battery.get_range()
+
+#练习9.13
+from random import randint
+
+#创建1个骰子类，默认为6面并随机生成数字，共10次
+class Die:
+
+#初始化描述骰子的属性，默认值为6面
+    def __init__(self,sides=6):
+        self.sides = sides
+    
+#生成roll_die函数，共循环10次并生成随机数字
+    def roll_die(self):
+        for self.side_number in range(1,11):
+            self.side_number = randint(1,self.sides)
+            print(f"{self.side_number}")
+
+roll_1 = Die()
+roll_1.roll_die()
+roll_2 = Die(10)
+roll_2.roll_die()
+roll_3 = Die(20)
+roll_3.roll_die()
+
+#练习9.14
+#%%
+# 模拟1次彩票抽奖
+from random import choice
+
+# 生成1个彩票池，带有数字和字母
+lottery = [1, 8, 25, 69, 11, 7, 54, 30, 87, 4, "a", "e", "w", "m", "c"]
+
+# 最大尝试次数赋值，避免长时间运行
+max_try = 10000
+
+
+# 定义一个随机抽4个号码的函数
+def make_my_ticket():
+    while len(my_ticket) < 4:
+        lottery_number = choice(lottery)
+        if lottery_number not in my_ticket:
+            my_ticket.append(lottery_number)
+    return my_ticket
+
+
+# ==== 主执行代码 ====
+winner_ticket = []
+
+# 当ticket小于4个数字时循环抽取，抽取1次就加到ticket里
+while len(winner_ticket) < 4:
+    lottery_number = choice(lottery)
+    if lottery_number not in winner_ticket:
+        winner_ticket.append(lottery_number)
+
+# 打印消息
+print(f"只要你的彩票上是这4个数字或字母就中奖了!\n"
+      f"中奖号码是: "
+      )
+
+# 1个号码为1行
+for lottery_number in winner_ticket:
+    print(lottery_number)
+
+my_ticket = []
+play = 0
+
+# 循环抽奖直至抽中或达到最大次数
+while True:
+    if my_ticket != winner_ticket:
+        play += 1
+        del my_ticket[:]
+        my_ticket = make_my_ticket()
+        print(f"我的号码是{my_ticket},很遗憾没有中奖,您已尝试{play}次")
+
+        if play == max_try:
+            break
+    else:
+        print(f"恭喜您中奖了！"
+              f"中奖号码是：{winner_ticket}"
+              f"你的号码是：{my_ticket}"
+              f"共尝试了{play}次"
+        )
+        break

@@ -991,7 +991,6 @@ roll_3 = Die(20)
 roll_3.roll_die()
 
 #练习9.14
-#%%
 # 模拟1次彩票抽奖
 from random import choice
 
@@ -1049,3 +1048,47 @@ while True:
               f"共尝试了{play}次"
         )
         break
+
+#第10章
+from pathlib import Path
+
+#路径要写到文件名
+path = Path("C:/Users/派派要popping/Desktop/files/text_files/filename.txt")
+content = path.read_text().rstrip() #方法链式调用
+print(content)
+
+path = Path("C:/Users/派派要popping/Desktop/files/text_files/filename.txt")
+content = path.read_text()
+lines = content.splitlines()
+pi_string = ""
+for line in lines:
+    pi_string += line.lstrip()
+print(pi_string)
+print(len(pi_string))
+
+# 调用pathlib的Path类并输入文件路径
+from pathlib import Path
+
+path = Path("D:/VscodeProject/practice/源代码文件/chapter_10/"
+"reading_from_a_file/pi_million_digits.txt")
+
+# 读取文件和行
+content = path.read_text()
+lines = content.splitlines()
+
+# ==== 主执行代码 ====
+# 检查输入的生日是不是在pi小数点里
+
+# 创建PI字符串并遍历文件每一行，整合成1行字符串
+pi_string = ""
+
+for line in lines:
+    pi_string += line.strip()
+
+# 用input函数输入生日，检查生日是否在pi_string里
+my_birthday = input("Enter birthday in mm/dd: ")
+
+if my_birthday in pi_string:
+    print("It's in pi")
+else:
+    print("It's not in Pi")

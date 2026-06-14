@@ -1092,3 +1092,58 @@ if my_birthday in pi_string:
     print("It's in pi")
 else:
     print("It's not in Pi")
+
+from pathlib import Path
+path = Path("learning_python.txt")
+content = path.read_text()
+print(content)
+
+# replace() 不改变原字符串，它返回一个新的。原content还是没变
+content = content.replace("Python","C++")
+print(content)
+
+for line in content.splitlines():
+    print(line)
+
+content += "\nI love it"
+path.write_text(content)    #在原有内容上增加
+print(content)
+path.write_text("I love programming!")  # 直接覆盖原有内容
+
+from pathlib import Path
+path = Path("learning_python.txt")
+
+input_name = input("Enter your name: ")
+path.write_text(input_name)
+content = path.read_text()
+print(content)
+
+
+from pathlib import Path
+path = Path("learning_python.txt")
+
+# ==== 主代码 ====
+# 把用户输入的name写进learning_python.txt并按行显示
+
+# 生成1个列表记录所有输入的名字
+user_list = []
+
+# 生成input指令
+prompt = "Enter your name: "
+prompt += "\nEnter 'quit' to end:"
+
+# while 循环添加name到use_list
+while True:
+        input_name = input(prompt)
+        if input_name == "quit":
+            break
+        user_list.append(input_name.title())
+
+# 遍历列表，在line中按行显示name
+line = ""
+for name in user_list:
+    line += f"{name}\n"
+
+# 写进path
+path.write_text(line)
+

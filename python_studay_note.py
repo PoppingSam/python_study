@@ -1118,32 +1118,94 @@ path.write_text(input_name)
 content = path.read_text()
 print(content)
 
-
 from pathlib import Path
-path = Path("learning_python.txt")
+path = Path("./learning_python.txt")
 
 # ==== 主代码 ====
 # 把用户输入的name写进learning_python.txt并按行显示
 
-# 生成1个列表记录所有输入的名字
-user_list = []
-
 # 生成input指令
-prompt = "Enter your name: "
-prompt += "\nEnter 'quit' to end:"
+prompt = "Enter your name" + "\nEnter 'quit' to end:"
+
+line = ""
+input_name = input(prompt)
 
 # while 循环添加name到use_list
-while True:
-        input_name = input(prompt)
-        if input_name == "quit":
-            break
-        user_list.append(input_name.title())
-
-# 遍历列表，在line中按行显示name
-line = ""
-for name in user_list:
-    line += f"{name}\n"
+while input_name != "quit":
+    line += input_name.title() + "\n"
+    input_name = input(prompt)
 
 # 写进path
 path.write_text(line)
+
+#Day10
+try:
+    print(5/0)
+
+except ZeroDivisionError:
+    print("You cannot divide by 0, please retry.")
+
+
+print("Give me two numbers and I will divide them.")
+print("Enter 'q' to quit.\n")
+
+while True:
+    first_number = input("The first number: ")
+    second_number = input("The second number: ")
+    if first_number == "q":
+        break
+    if first_number == "q":
+        break
+    try:
+        answer = float(first_number)/float(second_number)
+    except ZeroDivisionError:
+        print("You cannot divide by 0")
+    except ValueError:
+        print("You can only input number")
+    else:
+        print(answer)    
+
+from pathlib import Path
+path = Path()
+content = path.read_text(encoding="utf-8")
+
+#===============================================#
+#练习 10.6 & 10.7
+
+
+print("请输入两个数字,返回求和"+"输入'q'退出\n")
+
+while True:
+        
+        first_number = input("第1个数字: ")
+        second_number = input("第2个数字: ")
+        
+        if first_number == "q":
+            break
+        if second_number == "q":
+            break
+
+        try:
+            sum_number = int(first_number) + int(second_number)
+        except ValueError:
+            print("请输入数字, 谢谢!")
+        else:
+            print(sum_number)
+
+#===============================================#
+#练习10.8
+from pathlib import Path
+
+filenames = ["cats.txt", "dogs.txt"]
+
+for file in filenames:
+    path = Path(f"D:/VscodeProject/practice/{file}")
+    try:
+        content = path.read_text(encoding="utf-8")
+    except FileNotFoundError:
+        print(f"抱歉, {file}文件没有找到")
+    else:
+        print(content)
+
+
 

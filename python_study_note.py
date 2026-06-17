@@ -1203,9 +1203,25 @@ for file in filenames:
     try:
         content = path.read_text(encoding="utf-8")
     except FileNotFoundError:
-        print(f"抱歉, {file}文件没有找到")
+        pass
     else:
         print(content)
 
+from pathlib import Path
+path = Path('D:/VscodeProject/practice/Miss_Polly_Wiggles.txt')
+content = path.read_text(encoding="utf-8")
+words = content.lower().split()
+print(words)
+words.count("the")
+words.count("the ")
 
-
+from pathlib import Path
+path = Path('D:/VscodeProject/practice/Miss_Polly_Wiggles.txt')
+content = path.read_text(encoding="utf-8").lower()
+print(content)
+content.count("the")
+content.count("the ")
+#==================================================
+def get_formatted_name(first,last):
+    full_name = f"{first}{last}"
+    return full_name.title()

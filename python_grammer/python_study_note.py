@@ -333,15 +333,15 @@ for food in new_food_list:
     print(food)
 
 cars=["audi","bmw","subaru","toyota"]
-for car in cars:
-    if car=="bmw": # == 表示等于
-        print(car.upper())
+for python_grammer.car in cars:
+    if python_grammer.car=="bmw": # == 表示等于
+        print(python_grammer.car.upper())
     else:
-        print(car.title())
+        print(python_grammer.car.title())
 
-car="Audi"
-car=="audi" # 大小写不同，值不同
-car.lower()=="audi"
+python_grammer.car="Audi"
+python_grammer.car=="audi" # 大小写不同，值不同
+python_grammer.car.lower()=="audi"
 
 my_car="byd"
 if my_car!="audi":
@@ -356,12 +356,12 @@ age_1=18
 my_car=["audi","bmw","subaru","toyota"]
 "audi" in my_car
 "tesla" in my_car
-car="tesla"
-if car not in my_car:
+python_grammer.car="tesla"
+if python_grammer.car not in my_car:
     print("I want it!")
 
-car="tesla"
-print(car=="tesla")
+python_grammer.car="tesla"
+print(python_grammer.car=="tesla")
 
 first="Audi"
 second="audi"
@@ -410,10 +410,10 @@ elif    age>=65:
 
 available_list=["audi","bmw","subaru","toyota"]
 requested_list=["audi","bmw","byd","tesla"]
-for car in requested_list:
-    if car in available_list:
-        print(f"We have it, adding {car}")
-    else: print(f"Sorry, we don't have {car}")
+for python_grammer.car in requested_list:
+    if python_grammer.car in available_list:
+        print(f"We have it, adding {python_grammer.car}")
+    else: print(f"Sorry, we don't have {python_grammer.car}")
 print("This is your bill")
 
 user_list=["admin","Apple","Tom","Peter","John"]
@@ -597,8 +597,8 @@ age=int(age)
 age >18
 
 #练习7.1
-car = input("what kind of car do you wanna rent? ")
-print(f"Let me see if I can find you a {car.title()}")
+python_grammer.car = input("what kind of car do you wanna rent? ")
+print(f"Let me see if I can find you a {python_grammer.car.title()}")
 
 #练习7.2
 number_of_people = int(input("How many people? "))
@@ -931,29 +931,29 @@ my_electric_car.battery.upgrade_battery()
 my_electric_car.battery.get_range()
 
 # 将Car类单独存储在模块car.py中，然后使用from...import...导入Car类，让代码更简洁
-from car import Car
+from python_grammer.car import Car
 my_electric_car = ElectricCar("tesla","model y",2026,40)
 print(my_electric_car.get_description())
 
 # 从car.py导入ElectricCar类
-from car import ElectricCar
+from python_grammer.car import ElectricCar
 my_electric_car = ElectricCar("tesla","model y",2026,40)
 my_electric_car.battery.get_range()
 
 # 从car.py导入Car类和ElectricCar类
-from car import Car,ElectricCar
+from python_grammer.car import Car,ElectricCar
 my_electric_car = ElectricCar("tesla","model y",2026,40)
 print(my_electric_car.get_description())
 my_electric_car.battery.get_range()
 
 # 导入整个car.py文件，可以使用里面所有的类.使用点号标明访问需要的类
-import car
+import python_grammer.car as car
 my_electric_car = car.ElectricCar("tesla","model y",2026,40)
 print(my_electric_car.get_description())
 
 
 # 导入整个car.py文件，可以使用里面所有的类，但不推荐，因为有可能car.py里的类名和主程序里的重复
-from car import *
+from python_grammer.car import *
 my_electric_car = ElectricCar("tesla","model y",2026,40)
 print(my_electric_car.get_description())
 my_electric_car.battery.get_range()
@@ -961,8 +961,8 @@ my_electric_car.battery.upgrade_battery()
 my_electric_car.battery.get_range()
 
 # 从不同模块导入类
-from car import Car
-from electric_car import ElectricCar,Battery
+from python_grammer.car import Car
+from python_grammer.electric_car import ElectricCar,Battery
 my_electric_car = ElectricCar("tesla","model y",2026,40)
 print(my_electric_car.get_description())
 my_electric_car.battery.get_range()
@@ -1225,3 +1225,16 @@ content.count("the ")
 def get_formatted_name(first,last):
     full_name = f"{first}{last}"
     return full_name.title()
+
+#===================================================
+def func(a,b):
+    if b == 0:
+        return a
+    return func(b,a % b)
+
+print(func(12,8))
+
+for i in range(1,10):
+    for j in range(1,i+1):
+        print(f"{i}x{j}={i*j:<2}")
+

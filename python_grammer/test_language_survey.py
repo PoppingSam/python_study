@@ -1,5 +1,5 @@
 import pytest
-from survey import Survey
+from python_grammer.survey import Survey
 
 @pytest.fixture
 def language_survey():

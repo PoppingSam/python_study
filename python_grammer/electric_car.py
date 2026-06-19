@@ -1,5 +1,5 @@
 # 由于ElectricCar是Car的子类，所以单独存储为1个模块时，需要用from...import...访问car.py的Car类
-from car import Car
+from python_grammer.car import Car
 
 class ElectricCar(Car):
         

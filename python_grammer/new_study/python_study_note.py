@@ -931,29 +931,29 @@ my_electric_car.battery.upgrade_battery()
 my_electric_car.battery.get_range()
 
 # 将Car类单独存储在模块car.py中，然后使用from...import...导入Car类，让代码更简洁
-from python_grammer.car import Car
+from python_grammer.new_study.car import Car
 my_electric_car = ElectricCar("tesla","model y",2026,40)
 print(my_electric_car.get_description())
 
 # 从car.py导入ElectricCar类
-from python_grammer.car import ElectricCar
+from python_grammer.new_study.car import ElectricCar
 my_electric_car = ElectricCar("tesla","model y",2026,40)
 my_electric_car.battery.get_range()
 
 # 从car.py导入Car类和ElectricCar类
-from python_grammer.car import Car,ElectricCar
+from python_grammer.new_study.car import Car,ElectricCar
 my_electric_car = ElectricCar("tesla","model y",2026,40)
 print(my_electric_car.get_description())
 my_electric_car.battery.get_range()
 
 # 导入整个car.py文件，可以使用里面所有的类.使用点号标明访问需要的类
-import python_grammer.car as car
+import python_grammer.new_study.car as car
 my_electric_car = car.ElectricCar("tesla","model y",2026,40)
 print(my_electric_car.get_description())
 
 
 # 导入整个car.py文件，可以使用里面所有的类，但不推荐，因为有可能car.py里的类名和主程序里的重复
-from python_grammer.car import *
+from python_grammer.new_study.car import *
 my_electric_car = ElectricCar("tesla","model y",2026,40)
 print(my_electric_car.get_description())
 my_electric_car.battery.get_range()
@@ -961,8 +961,8 @@ my_electric_car.battery.upgrade_battery()
 my_electric_car.battery.get_range()
 
 # 从不同模块导入类
-from python_grammer.car import Car
-from python_grammer.electric_car import ElectricCar,Battery
+from python_grammer.new_study.car import Car
+from python_grammer.new_study.electric_car import ElectricCar,Battery
 my_electric_car = ElectricCar("tesla","model y",2026,40)
 print(my_electric_car.get_description())
 my_electric_car.battery.get_range()

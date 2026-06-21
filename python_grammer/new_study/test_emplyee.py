@@ -1,4 +1,4 @@
-from python_grammer.employee import Employee
+from python_grammer.new_study.employee import Employee
 import pytest
 
 @pytest.fixture

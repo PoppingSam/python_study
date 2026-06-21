@@ -1,6 +1,6 @@
 import sys
 import pygame
-from char import Char
+from python_grammer.new_study.char import Char
 
 class Game:
     def __init__(self):

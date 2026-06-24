@@ -235,13 +235,135 @@ if condition1 + condition2 + condition3 == 3:
 elif condition1 + condition2 + condition3 >= 2:
     print("一般供应高风险")
 
+#=======================================
+'''
+输入价格个数量，计算购买总金额
+'''
+total = 0
+while True:
+    price = float(input("请输入价格"))
+    qty = int(input("请输入数量"))
+    total += price * qty
+    answer = input("是否继续添加商品？按'q'退出：")
+    if answer == 'q':
+        break
+print(f"您购买的总金额是：{total}元")
 
 
+#=======================================
+'''
+产生一个随机数，可以猜多次，直到猜中为止. 猜错了提示猜大还是猜小
+'''
+import random
 
+number = random.randint(1,50)
+count = 0
+while True:
+    guess = int(input("从1-50之间猜1个数字: "))
+    count += 1
 
+    if guess == number:
+        if count == 1:
+            print("运气真好，去买彩票吧！")
+        elif 1 < count <= 5:
+            print("猜中了，运气不错！")
+        else:
+            print("猜中了，运气一般！")
+        break
+    elif guess > number:
+        print("猜大了")
+    else:
+        print("猜小了")
 
+#=======================================
+'''
+九九乘法表
+'''
+for i in range(1,10):
+    for j in range(1,i+1):
+        result = i * j
+        print(f"{i} x {j} = {result:<3}", end = "  ") # 用end+空格实现不换行
+    print() # 空打印，只干一件事——换行
 
+#=======================================
+'''
+1-50累计和，用for 循环
+'''
+j = 0
+for i in range(1,51):
+    j += i
+print(j)
 
+#=======================================
+'''
+输入用户名和密码,提示输入3次错误,账户被锁定
+'''
+for count in range(3):
+    username = input("输入用户名")
+    password = input("输入密码")
 
+    if username == "admin" and password == "1234":
+        print("登录成功")
+        break
+    print("用户名或密码有误")
+else:
+    print("账户被锁定")
 
+#=======================================
+'''
+掷骰子
+两个: 1-6
+1. 玩游戏要有金币，没金币不能玩游戏
+2. 玩游戏赠金币1枚, 充值获取金币
+3. 10元的倍数,得20个金币 
+4. 玩游戏消耗5个金币
+5. 猜大小：猜对 鼓励金币2枚,猜错没有奖励 点数相加超出6点以上认为是大,否则是小
+6 游戏结束:1.主动退出 2. 没有金币退出
+7 只要退出则打印金币数，共完了几局
+'''
+import random
+
+# 建立初始值，局数和金币数为0
+count = 0
+gold_coins = 0
+
+# 玩游戏前需充值，金币等于充值金额的2倍
+print("玩游戏前请充值, 需充值10元的倍数, 充值10元即获得20枚金币")
+
+while True:
+    charge = int(input("请输入充值金额: "))
+    if charge % 10 != 0:
+        print("充值错误,请充值10元的倍数")
+    else:
+        gold_coins += charge * 2
+        print(f"您的金币数是{gold_coins}")
+        break
+
+# 当金币数大于5的时候进入循环
+while gold_coins >= 5 :
+
+# 两个骰子点数相加
+    result = random.randint(1,6) + random.randint(1,6)
+
+# 按q退出，1表示大，2表示小. 
+    guess = input("猜大小(1表示大/2表示小),按'q'退出: ")
+    if guess == "q":
+        break
+    elif guess not in ("1", "2"):
+        continue   
+
+# 玩一局，赠送1枚金币且消耗5枚金币 
+    count += 1
+    gold_coins += 1
+    gold_coins -= 5
+
+# 点数大于6时为大，小于等于6时为小，猜对加2枚金币
+    if (guess == "1" and result > 6) or (guess == "2" and result <= 6):
+        gold_coins += 2
+        print(f"骰子点数: {result}点, 恭喜你,获得2枚金币, 您还剩{gold_coins}枚金币")
+    else:
+        print(f"骰子点数: {result}点, 真遗憾, 猜错了, 您还剩{gold_coins}枚金币")
+
+# 结束打印结果
+print(f"您一共玩了{count}局, 总计{gold_coins}枚金币")
 

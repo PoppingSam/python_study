@@ -367,3 +367,60 @@ while gold_coins >= 5 :
 # 结束打印结果
 print(f"您一共玩了{count}局, 总计{gold_coins}枚金币")
 
+#=======================================
+'''
+打印三角形
+'''
+for i in range(1,6):
+    print("*" * i)
+# ==========================
+i = 1
+while i <= 5:  # 外层控制行数
+    m = 0
+    while m < i: # 内层控制打印
+        print("*", end="") # print 默认自动换行，如果不想换行可以加end = ""
+        m += 1 
+    i += 1
+    print()
+
+
+'''
+打印矩形
+'''
+i = 1
+while i <= 4:
+    print("*" * 4)
+    i += 1
+
+'''
+用户名: admin123 
+手机号: 15811119999
+密码: 200325
+
+用户名或者手机号码登录+密码
+用户名：全部小写, 首字母不能是数字, 长度必须6位以上
+手机号码: 纯数字 长度11
+密码必须是6位数字
+
+以上符合条件, 则进入下层验证
+判断用户名+密码 是否正确, 则成功, 否则登录失败
+'''
+flag = True
+while flag:
+    username = input("请输入你的用户名/手机号: ")
+    if (username.islower() and not username[0].isdigit() and len(username) > 6) or (username.isdigit() and len(username) == 11):
+        while True:
+            password = input("请输入你的密码: ")
+            if password.isdigit() and len(password) == 6:
+                if (username == "admin123" or username == "15811119999") and password == "200325":
+                    print("登录成功")
+                    flag = False
+                    break
+                else:
+                    print("用户名或密码输入错误")
+                    break
+            else:
+                print("密码必须是6位数字")
+    else:
+        print("用户名格式错误")
+

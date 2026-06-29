@@ -146,6 +146,95 @@ print(s.islower())
 s = "124 gn"
 print(s.isspace())
 
+# replace(old, new, count): 默认全部替换，也可以通过count指定次数
+s = "a是个大笨蛋, b是个大大笨蛋"
+result = s.replace("笨蛋", "聪明", 1) # 数字代表替换几次
+print(result)
+
+# 如果要同时替换2个词，需要用正则表达式或循环+列表
+
+# split("分隔符"，count), 返回的结果是1个列表，count指定次数
+# 同理rsplit
+s = "a b c"
+result = s.split(" ",1)
+print(result) # ['a', 'b c']
+
+# splitlines: 按行分割, 返回的结果是1个列表
+s = '''床前明月光，
+疑是地上霜。
+举头望明月，
+低头思故乡。
+'''
+result = s.splitlines()
+print(result)
+
+# partition
+s = "a b c"
+result = s.partition(" ")
+print(result) # ('a', ' ', 'b c')
+
+# 大小写转换
+s = "hello World"
+result = s.title()
+print(result)
+result = s.upper()
+print(result)
+result = s.lower()
+print(result)
+result = s.capitalize() # 第一个单词的首字母变大写, Hello world
+print(result)
+
+# 空格处理
+username = " admin      "
+print(username)
+len(username)
+result = username.strip() # 去除两侧空格
+print(result)
+len(result)
+result = username.lstrip() # 去除左侧空格
+print(result)
+len(result)
+result = username.rstrip() # 去除右侧空格
+print(result)
+len(result)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

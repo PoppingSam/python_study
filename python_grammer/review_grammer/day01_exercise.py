@@ -424,3 +424,22 @@ while flag:
     else:
         print("用户名格式错误")
 
+'''
+模拟论坛
+'''
+#%%
+msg = input("发表一句话:")
+print("="*30)
+print("以下为回复内容")
+while True:
+    username = input("用户名:")
+    comment = input("请输入你的回复:").strip()
+    if len(comment) != 0:
+        if len(comment) <= 20:
+            print(f"\t{username}回复:\n\t{comment}")
+            break
+        else:
+            print("回复字数超过20个字")
+    else:
+        print("回复内容不能为空, 请重新输入")
+

@@ -198,20 +198,34 @@ result = username.rstrip() # 去除右侧空格
 print(result)
 len(result)
 
+# ljust, rjust, center 添加空格，控制对齐
+s = "hello World"
+result = s.rjust(30) # 右对齐
+print(result)
+result = s.center(30) # 居中
+print(result)
+result = s.ljust(30) # 左对齐
+print(result)
 
+# join 在abc后面分别增加m，打印出来ambmcm 
+s = "m"
+result = s.join("abc")
+print(result)
 
+# 字符串格式化
+name = "sam"
+age = 18
+result = "帅哥{}今年{}岁".format(name, age)
+print(result)
 
+result = "帅哥{0}今年{1}岁, 我也{1}岁".format(name, age)
+print(result)
 
+result = f"帅哥{name}今年{age}岁, 我也{age}岁"
+print(result)
 
-
-
-
-
-
-
-
-
-
+result = "帅哥{name}今年{age}岁, 我也{age}岁".format(name = "sam", age = 18)
+print(result)
 
 
 

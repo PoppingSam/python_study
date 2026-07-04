@@ -427,7 +427,7 @@ while flag:
 '''
 模拟论坛
 '''
-#%%
+
 msg = input("发表一句话:")
 print("="*30)
 print("以下为回复内容")
@@ -443,3 +443,31 @@ while True:
     else:
         print("回复内容不能为空, 请重新输入")
 
+'''
+买多件商品
+商品名,价格,数量
+'''
+
+list1 = [] # 购物车
+total_qty = 0
+total_amount = 0
+flag = True
+while flag:
+    # 添加商品
+    product = input("请输入商品名称: ")
+    price = input("请输入价格:")
+    qty = input("请输入数量:")
+    goods = [product, price, qty]
+    # 将商品添加到购物车中
+    list1.append(goods)
+
+    answer = input("是否需要继续添加, 按q/Q退出:")
+    if answer.lower() == "q":
+        flag = False
+
+    # 遍历list1
+for goods in list1:
+    print(f"{goods[0]}\t{float(goods[1])}\t{int(goods[2])}")
+    total_qty += int(goods[2])
+    total_amount += float(goods[1]) * int(goods[2])
+print(f"您一共购买了{total_qty}件, 消费的总金额共计{total_amount}元")

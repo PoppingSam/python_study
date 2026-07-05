@@ -153,3 +153,24 @@ b = a
 del a 
 print(a)
 print(b)
+
+# 生成8个1-20之间的随机数
+# 列表排序
+
+import random
+list1 = []
+while len(list1) < 8:
+    number = random.randint(1,100)
+    if number not in list1:
+        list1.append(number)
+print(list1)
+
+list1.sort() # 正序排列
+print(list1)
+
+list1.sort(reverse=True) # 通过reverse参数控制升序还是降序, True是降序, False是升序
+print(list1)
+list1[0]
+
+list1.reverse() # 调用reverse方法, 没有排序, 列表反转, 并不是按数字大小倒序排序
+print(list1)

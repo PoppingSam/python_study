@@ -471,3 +471,22 @@ for goods in list1:
     total_qty += int(goods[2])
     total_amount += float(goods[1]) * int(goods[2])
 print(f"您一共购买了{total_qty}件, 消费的总金额共计{total_amount}元")
+
+# 生成8个1-20之间的随机数, 保存到列表, 键盘输入1个1-100之间的整数, 将整数插入到排序后的列表中
+
+import random
+list1 = []
+while len(list1) < 8:
+    number = random.randint(1,100)
+    if number not in list1:
+        list1.append(number)
+print(list1)
+list1.sort()
+print(list1)
+
+# 输入数字后插入到末尾
+input_number = int(input("请输入1个数字: "))
+list1.append(input_number)
+# 再用sort排序
+list1.sort()
+print(list1)

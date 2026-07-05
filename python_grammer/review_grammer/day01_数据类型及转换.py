@@ -31,3 +31,12 @@ a = ""
 b = -5
 print(bool(a))
 print(bool(b))
+
+# 交换变量
+a = 2
+b = 3
+a, b = b, a
+print(a, b)
+
+a,b,c = b,a,b
+print(a,b,c)

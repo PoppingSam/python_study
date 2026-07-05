@@ -81,3 +81,5 @@ for i in range(10):
         continue
     else:
         print(i)
+
+# 双层for循环, 外层控制轮数, 内层控制两两比较

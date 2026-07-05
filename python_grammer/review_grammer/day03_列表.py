@@ -78,6 +78,78 @@ for i in list1[:]: # 这里使用for循环 list1的副本, 因为remove的是lis
 print(list1)
 
 '''
-删除: pop remove clear
-clear:
+删除: pop remove clear del
+clear: 清空列表元素
 '''
+list1 = [1,2,3,4,5,6]
+del list1[3] # del 列表[index], 此方法和使用pop一样
+print(list1)
+
+# 用clear清空列表元素, 但列表还在，之后仍可以用append等方法
+list1 = [1,2,3,4,5,6]
+list1.clear()
+list1.append(20)
+print(list1)
+
+# 用del删除整个列表, 列表不存在, 之后不能再用append等方法
+list1 = [1,2,3,4,5,6]
+del list1
+list1.append(20)
+print(list1)
+
+'''
+添加: 列表查找索引, 可以用index方法, 没有find方法
+'''
+list1 = [1,2,3,4,5,6]
+list1.insert(1,9) # insert(索引, 新参数), 在这个索引位置插入新参数, 其他元素向后移动
+print(list1)
+
+list1[1] = 8 # 直接在索引1替换成8
+print(list1)
+
+'''
+修改: 列表[index] = 新参数
+'''
+location = list1.index(5) # 找出5所在的索引
+list1[location] = 10 # 在5所在的索引, 把5替换成10
+print(list1)
+
+'''
+查找: 
+    1. 元素 in/not in 列表  返回bool类型
+    2. 列表.index(元素) 返回元素的索引, 如果没有则报错
+    3. 列表.count(元素) 返回元素出现的次数, 返回值为0则表示不存在此元素
+'''
+
+# 列表可以存储多个数据, list2和list1指向同一个内存地址. list1地址不变, 在原有基础上添加元素, list2也会添加元素. 因为地址相同
+list1 = [1,2,3,4,5,6]
+list2 = list1
+list1.append(7)
+print(list1)
+print(list2)
+
+list1 = [1,2,3,4,5,6]
+list2 = list1
+list1.clear()
+print(list1)
+print(list2)
+
+list1 = [1,2,3,4,5,6]
+list2 = list1
+del list1
+print(list1) # list1不存在
+print(list2) # list2存在
+
+# 字符串只存储1个数据, b和a指向同一个内存地址. a赋值变了, 相当于a换了个内存地址, b还是原来的地址. 因此b不等于a
+a = 7
+b = a
+a = 8
+print(a)
+print(b)
+
+# 字符串只存储1个数据, b和a指向同一个内存地址. 把a赶出这个内存地址, b还在原来的内存地址. 因a不存在, b存在
+a = 7 
+b = a
+del a 
+print(a)
+print(b)

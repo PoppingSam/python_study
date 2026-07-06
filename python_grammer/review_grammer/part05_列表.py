@@ -56,6 +56,7 @@ remove: 根据元素删除, 如果列表存在多个同名元素, 只删除遇�
 list1 = ["牛奶", "面包", "饮料", "鸡蛋", "水果", "蔬菜", "饮料", "零食"]
 list1.remove("饮料")
 print(list1)
+list1.index("饮料",3,7)
 
 '''
 删除多个同名元素
@@ -174,3 +175,14 @@ list1[0]
 
 list1.reverse() # 调用reverse方法, 没有排序, 列表反转, 并不是按数字大小倒序排序
 print(list1)
+
+list1 = [1,2,38,45,5,6]
+list2 = sorted(list1) # sorted函数返回一个新列表
+print(list1) # 打印原列表, 顺序没变
+print(list2) # 打印新列表, 顺序变了
+list1.sort() # sort方法是对原列表进行修改
+print(list1) # 打印原列表，顺序变了
+
+a = sorted("hello")
+print(a)
+

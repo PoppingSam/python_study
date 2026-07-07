@@ -185,4 +185,3 @@ print(list1) # 打印原列表，顺序变了
 
 a = sorted("hello")
 print(a)
-

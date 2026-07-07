@@ -490,3 +490,80 @@ list1.append(input_number)
 # 再用sort排序
 list1.sort()
 print(list1)
+
+'''
+王者荣耀角色管理
+角色: 姓名 性别 职业
+添加角色
+删除角色
+修改角色
+查询角色
+显示所有角色
+退出系统
+'''
+#%%
+import time
+
+print("欢迎进入王者荣耀角色管理")
+role = []
+all_roles = []
+while True:
+    choice = input("请选择功能:\n 1.添加角色 \n 2.删除角色 \n 3.修改角色 \n 4.查询角色 \n 5.显示所有角色 \n 6.退出系统 \n")
+    # 判断
+    if choice == "1":
+        print("添加角色模块:")
+        name = input("\t请输入角色名: ")
+        gender = input("\t请输入角色性别: ")
+        profession = input("\t请输入角色职业: ")
+        role = [name, gender, profession]        
+        all_roles.append(role)
+        print(f"\t成功添加{name}到王者荣耀管理系统")
+    elif choice == "2":
+        print("删除角色模块:")
+        role_name = input("\t请输入角色名: ")
+        for role in all_roles:
+            if role_name in role:
+                all_roles.remove(role)
+                print(f"\t成功删除{role_name}!")
+                break
+        else:
+            print(f"\t本系统不存在{role_name}, 请检查角色名称")
+    elif choice == "3":
+        print("修改角色模块:")
+        role_name = input("\t请输入要修改的角色:")
+        for role in all_roles:
+            if role_name in role:
+                new_role = input("\t请输入新角色")
+                new_gender = input("\t请输入角色性别: ")
+                new_profession = input("\t请输入角色职业: ")
+                role[0] = new_role
+                role[1] = new_gender
+                role[2] = new_profession
+                print("\t新角色信息如下:")
+                print(f"\t{role[0].ljust(10)}{role[1].ljust(10)}{role[2].ljust(10)}")
+            else:
+                print(f"本系统不存在{role_name}, 请检查角色名称")
+    elif choice == "4":
+        print("查询角色模块:")
+        role_name = input("请输入角色名: ")
+        for role in all_roles:
+            if role_name in role:
+                print("\t角色信息如下:")
+                print(f"\t{role[0].ljust(10)}{role[1].ljust(10)}{role[2].ljust(10)}")
+                break
+        else:
+            print(f"本系统不存在{role_name}, 请检查角色名称")
+    elif choice == "5":
+        print("显示所有角色模块: ")
+        print(f"{"名称".center(10)}{"性别".center(10)}{"职业".center(10)}")
+        for role in all_roles:
+            print(role[0].center(10), end="")
+            print(role[1].center(10), end="")
+            print(role[2].center(10), end="")
+            print()
+    elif choice == "6":
+        print("正在退出")
+        time.sleep(3) # 休眠
+        print("成功退出!")
+    else:
+        print("输入错误, 请重新输入")

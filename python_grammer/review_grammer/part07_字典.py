@@ -51,10 +51,68 @@ print(book)
 del book["作者"] # del 类似于pop
 print(book)
 
+# 删除每一本的出版社
+books = [
+    {'书名': 'Python', '价格': 40.0, '作者': 'Sam', '出版社': '人民出版社'},
+    {'书名': 'C++', '价格': 30.0, '作者': 'Sam', '出版社': '邮电出版社'}
+    ]
 
+for book in books:
+    book.pop("出版社")
+print(books)
 
+'''
+遍历和查询:
+list.index() list.count() in
+dict.get(key)
+dict[key]
+区别在于: get(key) 通过get获取不存在的key,返回None, 不会报错.同时可以设置默认值
 
+'''
+# 根据key获取value的值
+book = {'书名': 'Python', '价格': 40.0, '作者': 'Sam', '出版社': '人民出版社'}
+value = book.get("书名2", "默认值") # 通过get获取不存在的key,返回None, 不会报错.同时可以设置默认值
+print(value)
 
+# 如果使用for..in 直接遍历字典，取出的是字段的key
+book = {'书名': 'Python', '价格': 40.0, '作者': 'Sam', '出版社': '人民出版社'}
+for i in book:
+    print(i)
+
+book.values()
+# dict.values 获取字典中所有的value值, 存放到一个列表
+for v in book.values():
+    print(v)
+
+# dict.keys 获取字典中所有的key值, 存放到一个列表
+for k in book.keys():
+    print(k)
+
+# dict.items 获取字段中的键值对，存放到一个列表, 返回每一个元组
+# dict.items [(key, value),().....]
+book.items()
+for m in book.items():
+    print(m) # 返回1个元组(key,value)
+
+for k, v in book.items(): # 把key和value拆分
+    print(k,v)
+    print(k)
+    print(v)
+
+# setdefault 只能用于添加
+book.setdefault("渠道", "电商") 
+print(book)
+
+# update 将2个字典合并
+dict1 = {"a":10}
+book.update(dict1)
+print(book)
+
+# fromkeys调用的是类, 一定要用dict
+result = dict.fromkeys(["c", "d"])
+print(result) # 创建1个新字典, key是c,d
+result = dict.fromkeys(["c", "d"],20)
+print(result) # 通过设置参数, 将参数赋值给key
 
 
 

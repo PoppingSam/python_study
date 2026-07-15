@@ -185,3 +185,8 @@ print(list1) # 打印原列表，顺序变了
 
 a = sorted("hello")
 print(a)
+
+# 用+ 可以合并列表
+list1 = [1,2,38,45,5,6]
+list2 = [1,2,3,4,5,6]
+print(list1 + list2)

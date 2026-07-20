@@ -114,5 +114,3 @@ print(result) # 创建1个新字典, key是c,d
 result = dict.fromkeys(["c", "d"],20)
 print(result) # 通过设置参数, 将参数赋值给key
 
-
-

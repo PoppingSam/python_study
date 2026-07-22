@@ -19,12 +19,14 @@ elif choice == "2":
 elif choice == "3":
     search = input(f"请输入书名或作者: ")
     for book in books:
-        if book["书名"] == search:
-            print("此书存在")
-        elif book["author"] == search:
-            print(f"《{book["书名"]}》存在")
+        if book["书名"] == search or book["author"] == search:
+            print("您要查询的书籍:")
+            print(f"{'书名'.ljust(10)}{'作者'.ljust(10)}")
+            print(f"{book['书名'].ljust(10)}{book['author'].ljust(10)}")
+            break
     else:
         print(f"{search}未找到")
 
 elif choice == "4":
     print("已退出")
+

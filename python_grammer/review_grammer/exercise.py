@@ -569,11 +569,3 @@ while True:
         print("输入错误, 请重新输入")
 
 
-'''
-图书管理系统
-'''
-books = {
-    "书名": "三体", "author": "刘慈欣", "publisher": "重庆出版社",
-    "书名": "活着", "author": "余华",   "publisher": "作家出版社",
-    "书名": "西游记", "author": "吴承恩", "publisher": "中华书局",
-}
